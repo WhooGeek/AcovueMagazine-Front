@@ -12,3 +12,8 @@ export const postLogin = (email, password) => {
     MemberPassword: password
   });
 };
+
+/* 로그아웃 API 호출 함수 */
+export const putLogout = () => {
+  return client.put("/api/member/logout");
+};
