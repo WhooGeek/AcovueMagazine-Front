@@ -16,11 +16,24 @@ const PostEditor = ({ content, setContent }) => {
             'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|',
             'undo', 'redo'
           ],
-          // 이미지 업로드 기능은 별도 설정 필요 (일단 텍스트 위주)
+          // 이미지 업로드 기능 추가 예정
         }}
+
+        onReady={(editor) => {
+            // 에디터가 처음 켜질 때 초기값이 잘 들어갔는지 확인
+            console.log("Editor Ready. Initial data:", editor.getData());
+        }}
+
         onChange={(event, editor) => {
           const data = editor.getData(); 
+          console.log("작성 중인 내용:", data);
           setContent(data);
+        }}
+
+        onBlur={(event, editor) => {
+            const data = editor.getData();
+            console.log("Blur (저장 확정):", data);
+            setContent(data);
         }}
       />
     </div>

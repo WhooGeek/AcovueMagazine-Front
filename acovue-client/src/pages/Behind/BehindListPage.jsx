@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import PostListView from "../../components/PostList/PostListView"
 import { getPostList } from "../../api/Post.api"
-import CommonWriteButton from "../../components/Common/CommonWriteButton";
+import PostWriteButton from "../../components/Common/PostWriteButton";
 import "./BehindListPage.css";
 
 export default function BehindListPage(){
@@ -26,7 +26,7 @@ export default function BehindListPage(){
         <div>
             <div className="behind-header">
                 <div className="behind-listpage-title">BEHIND</div> 
-                <CommonWriteButton/>
+                <PostWriteButton/>
             </div>
             <PostListView
                 postList={postList}

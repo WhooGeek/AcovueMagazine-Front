@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import PostListView from "../../components/PostList/PostListView"
 import { getPostList } from "../../api/Post.api"
-import CommonWriteButton from "../../components/Common/CommonWriteButton";
+import PostWriteButton from "../../components/Common/PostWriteButton";
 import "./NewsListPage.css";
 
 
@@ -27,12 +27,10 @@ export default function NewsListPage(){
         <div>
             <div className="news-header">
                 <div className="news-listpage-title">NEWS</div> 
-                <CommonWriteButton/>
+                <PostWriteButton/>
             </div>
             <PostListView postList={postList} title="NEWS"/>
         </div>
-
-        
     );
 
 }

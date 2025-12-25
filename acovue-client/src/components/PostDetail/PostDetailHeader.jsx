@@ -1,12 +1,12 @@
 import "./PostDetailHeader.css"
 import {formatTime} from "../../components/Util/FormatTime.jsx";
 import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import PostActionButtons from "../Common/PostActionButton.jsx";
 
 export default function PostDetailHeader({ post }) {
 
-  const navigate = useNavigate();
   const [canEdit, setCanEdit] = useState(false); // 버튼 노출 상태 관리
 
   useEffect(() => {
@@ -20,7 +20,8 @@ export default function PostDetailHeader({ post }) {
         const currentUserSeq = decoded.memberSeq;
         const currentUserRole = decoded.auth;
 
-        if(currentUserSeq == post.memberSeq || currentUserRole === "ADMIN"){
+        // 타입 다를수도 있어서 느슨한 비교
+        if(String(currentUserSeq) === String(post.memberSeq) || currentUserRole === "ADMIN"){
           setCanEdit(true);
         }
       } catch (error){
@@ -33,24 +34,6 @@ export default function PostDetailHeader({ post }) {
     }
   }, [post]);
 
-
-  // 수정 버튼 핸들러
-  const handleEdit = () => {
-    navigate(`/NEWS/${post.postSeq}/edit`, { state: { post } });
-  };
-
-  // 삭제 버튼 핸들러
-  const handleDelete = async () => {
-    if (window.confirm("정말로 이 게시물을 삭제하시겠습니까?")) {
-      try{
-        alert(" 삭제 되었습니다. ");
-        navigate("/news?page=1&limit=5&type=NEWS")
-      }catch(error){
-        console.error("Error deleting post:", error);
-      }
-    }
-  };
-
   if (!post) return null;
 
   return (
@@ -62,10 +45,10 @@ export default function PostDetailHeader({ post }) {
           <div className="post-regdate">작성일 : {formatTime(post.regDate)}</div>
         </div>
         {canEdit && (
-          <div className="post-under-title-edit">
-            <button className="post-edit-button" onClick={handleEdit}>수정</button>
-            <button className="post-delete-button" onClick={handleDelete}>삭제</button>
-          </div>
+            <PostActionButtons 
+                postId={post.postSeq}
+                postCategory={post.post_category}
+            />
         )}
         
 
