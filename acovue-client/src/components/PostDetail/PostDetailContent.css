@@ -1,0 +1,39 @@
+/* 에디터 내용이 들어가는 영역 */
+.post-content-view {
+    margin-top: 20px;
+    line-height: 1.6;
+    color: #333;
+    font-size: 16px;
+}
+
+/* 에디터 안의 이미지 크기 조절 (화면 뚫고 나가는 것 방지) */
+.post-content-view img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+/* 문단 간격 */
+.post-content-view p {
+    margin-bottom: 10px;
+    min-height: 1em; /* 빈 줄도 높이 유지 */
+}
+
+/* 인용구 스타일 (에디터에 인용구 기능이 있다면) */
+.post-content-view blockquote {
+    border-left: 4px solid #ddd;
+    margin: 10px 0;
+    padding-left: 15px;
+    color: #666;
+}
+
+/* 리스트 스타일 복구 (reset.css 때문에 점이 사라졌을 경우) */
+.post-content-view ul, 
+.post-content-view ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    list-style-position: inside;
+}
+.post-content-view ul { list-style-type: disc; }
+.post-content-view ol { list-style-type: decimal; }

@@ -6,9 +6,9 @@ export default function AboutMeDetail({post}){
         <article>
             <section className="aboutmeContainer">
                 
-                <p className="aboutmeContent">
-                    {post.about_me_content}
-                </p>
+                <div className="aboutmeContent">
+                    <div className="post-content-view" dangerouslySetInnerHTML={{__html: post.about_me_content}} />
+                </div>
             </section>
         </article>
     )
