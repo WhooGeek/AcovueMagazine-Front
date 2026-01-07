@@ -4,8 +4,8 @@ import PostDetailView from "../../components/PostDetail/PostDetailView";
 import {
   getPostDetail,
   getCommentDetail,
-  getLikePost,
 } from "../../api/Post.api";
+import { getLikePost } from "../../api/Like.api";
 
 export default function NewsDetailPage() {
   const { postId } = useParams();

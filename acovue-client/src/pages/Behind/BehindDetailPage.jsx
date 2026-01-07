@@ -1,11 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PostDetailView from "../../components/PostDetail/PostDetailView"
-import{
-    getPostDetail,
-    getCommentDetail,
-    getLikePost,
-} from "../../api/Post.api"
+import{ getPostDetail } from "../../api/Post.api"
+import { getCommentDetail } from "../../api/Comment.api"
+import { getLikePost } from "../../api/Like.api"
 
 export default function BehindDetailPage() {
     const { postId } = useParams();
