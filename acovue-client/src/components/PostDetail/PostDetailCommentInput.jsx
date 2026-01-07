@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { postComment } from "../../api/Comment.api";
 import "./PostDetailCommentInput.css";
 
 
-export default function PostDetailCommentInput({isLoggedIn}){
+export default function PostDetailCommentInput({isLoggedIn, post, onCommentSubmit}){
 
     const [content, setContent] = useState("");
     const [error, setError] = useState(false);
@@ -13,7 +14,7 @@ export default function PostDetailCommentInput({isLoggedIn}){
         }
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if(!isLoggedIn){
             alert("로그인이 필요합니다.");
             return;
@@ -24,11 +25,22 @@ export default function PostDetailCommentInput({isLoggedIn}){
             return;
         }
 
-        // 나중에 API 연결
-        console.log("댓글 등록: ", content);
+        try{
+            const data = { commentContent: content };
+            
+            await postComment(post.postSeq, data);
 
-        setContent("");
-        setError(false);
+            setContent(""); 
+            setError(false);
+
+            if (onCommentSubmit) {
+                onCommentSubmit();
+            }
+
+        } catch (error) {
+            console.error("댓글 등록 중 오류 발생:", error);
+            alert("댓글 등록 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
     };
 
 
@@ -38,10 +50,11 @@ export default function PostDetailCommentInput({isLoggedIn}){
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 onFocus={handleFocus}
+                readOnly={!isLoggedIn} 
                 placeholder={
                     isLoggedIn
                     ? "댓글을 입력해주세요"
-                    : "로그인이 필요합니다."
+                    : "댓글을 작성하려면 로그인이 필요합니다."
                 }
             />
 

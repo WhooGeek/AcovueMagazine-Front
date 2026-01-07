@@ -6,7 +6,7 @@ export const getCommentDetail = (postId) =>
 
 // 댓글 등록
 export const postComment = (postId, data) => {
-  return client.put(`/api/post/comment/create/${postId}`, data)
+  return client.post(`/api/post/comment/create/${postId}`, data)
 }
 
 // 댓글 수정

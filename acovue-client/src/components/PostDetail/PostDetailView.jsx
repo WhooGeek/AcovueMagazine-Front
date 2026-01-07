@@ -12,6 +12,8 @@ export default function PostDetailView({
   comments,
   postLikes,
   commentLikes,
+  isLoggedIn,
+  onCommentSubmit
 }) {
   return (
     <article className="post-detail">
@@ -28,7 +30,7 @@ export default function PostDetailView({
       <PostDetailComments comments={comments} commentLikes={commentLikes} />
 
       {/* 댓글 입력 */}
-      <PostDetailCommentsInput />
+      <PostDetailCommentsInput post={post} isLoggedIn={isLoggedIn} onCommentSubmit={onCommentSubmit} />
 
       {/* 하단 네비 */}
       <PostDetailNavigation />
