@@ -1,12 +1,140 @@
-.comment-container{
-    margin-top:1.7rem;
-    margin-left:1.5 rem;
+/* 전체 댓글 컨테이너 */
+.comment-container {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin-bottom:2rem;
 }
 
-.comment-name{
-    margin-bottom:0.8rem;
+/* 개별 댓글 박스 */
+.comment-box {
+  padding: 16px 0;
+  border-bottom: 1px solid #f1f1f1;
+  transition: background-color 0.2s;
 }
 
-.comment-content{
-    margin-bottom:1.7rem;
+/* 대댓글일 경우 스타일 (약간의 배경색과 둥근 모서리) */
+.comment-box.is-reply {
+  margin-top: 10px;
+  background-color: #f8f9fa; /* 연한 회색 배경 */
+  padding: 15px;
+  border-radius: 8px;
+  border-bottom: none;
+}
+
+/* 댓글 작성자 이름 영역 */
+.comment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.comment-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.reply-badge {
+  font-size: 11px;
+  background-color: #e9ecef;
+  color: #666;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-weight: normal;
+}
+
+/* 댓글 본문 */
+.comment-content {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  white-space: pre-wrap; /* 줄바꿈 허용 */
+  margin-bottom: 8px;
+}
+
+/* 버튼 액션 영역 (답글, 수정, 삭제) */
+.comment-actions {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.action-btn:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+.action-btn.delete:hover {
+  color: #dc3545; /* 삭제 버튼은 빨간색으로 */
+}
+
+/* --- 수정/답글 입력 폼 영역 --- */
+.edit-area, .reply-input-box {
+  margin-top: 10px;
+}
+
+.comment-textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  resize: none;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+.comment-textarea:focus {
+  border-color: #333;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* 저장/등록 버튼 (검정색) */
+.submit-btn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #000;
+}
+
+/* 취소 버튼 (회색) */
+.cancel-btn {
+  background-color: #fff;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #f8f8f8;
 }
