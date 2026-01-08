@@ -12,6 +12,7 @@ export default function PostDetailView({
   comments,
   postLikes,
   commentLikes,
+  currentUser,
   isLoggedIn,
   onCommentSubmit
 }) {
@@ -27,7 +28,7 @@ export default function PostDetailView({
       <PostDetailActions post={post} postLikes={postLikes} commentCount={comments.length} />
 
       {/* 댓글 목록 */}
-      <PostDetailComments comments={comments} commentLikes={commentLikes} />
+      <PostDetailComments comments={comments} commentLikes={commentLikes} post={post} currentUser={currentUser} onRefresh={onCommentSubmit}/>
 
       {/* 댓글 입력 */}
       <PostDetailCommentsInput post={post} isLoggedIn={isLoggedIn} onCommentSubmit={onCommentSubmit} />

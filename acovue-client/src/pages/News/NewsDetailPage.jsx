@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+
 import PostDetailView from "../../components/PostDetail/PostDetailView";
 import { getPostDetail } from "../../api/Post.api";
 import { getCommentDetail } from "../../api/Comment.api";
@@ -13,6 +15,8 @@ export default function NewsDetailPage() {
   const [postLikes, setPostLikes] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [currentUser, setCurrentUser] = useState(null);
+
   const fetchComments = async () => {
 
     try {
@@ -24,6 +28,7 @@ export default function NewsDetailPage() {
   };
 
   useEffect(() => {
+    
     getPostDetail(postId).then(res =>
       setPost(res.data.data)
     );
@@ -35,7 +40,24 @@ export default function NewsDetailPage() {
     );
 
     const token = localStorage.getItem("accessToken");
-    setIsLoggedIn(!!token);
+
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+
+        setCurrentUser({
+            memberSeq: decoded.memberSeq, 
+            name: decoded.sub,   
+        });
+        
+        setIsLoggedIn(true);
+      } catch (error) {
+        console.error("토큰 해석 실패", error);
+        setIsLoggedIn(false);
+      }
+    } else {
+        setIsLoggedIn(false);
+    }
   }, [postId]);
 
   const handleRefreshComments = () => {
@@ -52,6 +74,7 @@ export default function NewsDetailPage() {
       postLikes={postLikes}
       isLoggedIn={isLoggedIn}
       onCommentSubmit={handleRefreshComments}
+      currentUser={currentUser}
     />
   );
 }
