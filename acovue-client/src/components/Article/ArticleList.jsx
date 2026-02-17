@@ -7,7 +7,11 @@ export default function ArticleList({ title, items }) {
       <h2 className="article-title">{title}</h2>
       <div className="article-image" >
         {items.map((item) => (
-          <ArticleCard key={item.postSeq} data={item} />
+          <ArticleCard 
+            key={item.postSeq} 
+            data={item}
+            category={item.post_category}
+            />
         ))}
       </div>
     </div>
