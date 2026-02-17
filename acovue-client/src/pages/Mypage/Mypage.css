@@ -1,0 +1,176 @@
+/* 전체 배경 중앙 정렬 */
+.mypage-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa; /* 연한 회색 배경 */
+  min-height: 80vh;
+}
+
+/* 카드 디자인 */
+.mypage-card {
+  background: white;
+  width: 100%;
+  max-width: 500px; /* 너무 넓어지지 않게 */
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mypage-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* 프로필 아바타 (동그라미) */
+.profile-image-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #FFA600; /* 포인트 컬러 */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* 정보 리스트 */
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: #888;
+  font-weight: 500;
+}
+
+.info-value {
+  color: #333;
+  font-weight: 600;
+}
+
+/* 소셜 로그인 뱃지 */
+.provider-badge {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  background-color: #eee;
+  color: #555;
+  text-transform: uppercase;
+}
+
+/* 버튼 영역 */
+.mypage-actions {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-change-pw {
+  width: 100%;
+  padding: 12px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  color: #333;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-change-pw:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-logout {
+  width: 100%;
+  padding: 12px;
+  background-color: #fff0f0;
+  border: none;
+  border-radius: 8px;
+  color: #d32f2f;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-logout:hover {
+  background-color: #ffe0e0;
+}
+
+/* 닉네임 수정/보기 컨테이너 */
+.nickname-view-box, .nickname-edit-box {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 요소 사이 간격 */
+  flex-grow: 1; /* 남은 공간 차지 */
+  justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+/* 닉네임 입력 인풋 */
+.input-nickname {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 120px;
+}
+
+/* 미니 버튼들 공통 스타일 */
+.btn-edit-mini, .btn-save-mini, .btn-cancel-mini {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+/* 변경(수정) 버튼 */
+.btn-edit-mini {
+  background-color: #f1f3f5;
+  color: #495057;
+}
+.btn-edit-mini:hover {
+  background-color: #e9ecef;
+}
+
+/* 저장 버튼 */
+.btn-save-mini {
+  background-color: #FFA600;
+  color: white;
+}
+.btn-save-mini:hover {
+  background-color: #FFA600;
+}
+
+/* 취소 버튼 */
+.btn-cancel-mini {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #666;
+}
+.btn-cancel-mini:hover {
+  background-color: #f8f9fa;
+}

@@ -87,7 +87,7 @@ export default function Header() {
                 <Link
                   to="/mypage"
                   className="dropdown-item"
-                  onClick={() => setShowDropdown(false)}
+                  onClick={() => setShowDropdown(false) }
                 >
                 마이페이지
                 </Link>
