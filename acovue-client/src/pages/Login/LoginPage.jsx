@@ -29,6 +29,12 @@ export default function LoginPage() {
         }
     }
 
+    // 구글 로그인 핸들러
+    const handleGoogleLogin = () => {
+      // 구글 로그인 URL로 리다이렉트
+      window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    }
+
   return (
     <div className="login-container">
       <div className="login-box">
@@ -70,8 +76,10 @@ export default function LoginPage() {
 
         {/* 5. 소셜 로그인 버튼들 */}
         <div className="social-login-group">
+          <button className="social-btn google" onClick={handleGoogleLogin}>
+            구글로 시작하기
+          </button>
           <button className="social-btn kakao">카카오로 시작하기</button>
-          <button className="social-btn google">구글로 시작하기</button>
         </div>
       </div>
     </div>
