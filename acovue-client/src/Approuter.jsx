@@ -14,6 +14,7 @@ import CommunityCreatePage from "./pages/Community/CommunityCreatePage";
 import CommonUpdatePage from "./pages/Common/CommonUpdatePage";
 import AboutMeUpdatePage from "./pages/About/AboutMeUpdatePage";
 import Mypage from "./pages/Mypage/Mypage";
+import OAuthRedirectHandler from "./components/Util/OAuthRedirectHandler";
 
 export default function AppRouter() {
     return (
@@ -35,6 +36,7 @@ export default function AppRouter() {
             <Route path="/community/:postId/update" element={<CommonUpdatePage category="COMMUNITY" boardTitle="커뮤니티 수정" prevPath="/community?page=1&limit=5&type=COMMUNITY"/>}/>
             <Route path="/about_me/update" element={<AboutMeUpdatePage prevPath="/about_me"/>}/>
             <Route path="/mypage" element={<Mypage/>} />
+            <Route path="/oauth/redirect" element={<OAuthRedirectHandler />} />
             
         </Routes>
     )
