@@ -3,6 +3,8 @@ import { postLogin } from "../../api/Login.api"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
+import google_icon from "../../assets/google_icon.png";
+import naver_icon from "../../assets/naver_icon.ico";
 
 export default function LoginPage() {
 
@@ -68,13 +70,6 @@ export default function LoginPage() {
           <button type="submit" className="login-submit-btn">로그인</button>
         </form>
 
-        {/* 3. 추가 옵션 */}
-        <div className="login-options">
-          <span>비밀번호 찾기</span>
-          <span className="divider">|</span>
-          <span>회원가입</span>
-        </div>
-
         {/* 4. 구분선 */}
         <div className="social-divider">
           <span>간편 로그인</span>
@@ -83,10 +78,12 @@ export default function LoginPage() {
         {/* 5. 소셜 로그인 버튼들 */}
         <div className="social-login-group">
           <button className="social-btn google" onClick={handleGoogleLogin}>
-            구글로 시작하기
+            <img className="social-icon" src={google_icon} alt="google" />
+            Google로 로그인
           </button>
           <button className="social-btn naver" onClick={handleNaverLogin}>
-            네이버로 시작하기
+            <img className="social-icon" src={naver_icon} alt="naver" />
+            네이버로 로그인
           </button>
         </div>
       </div>
