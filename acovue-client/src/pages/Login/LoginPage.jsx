@@ -35,6 +35,12 @@ export default function LoginPage() {
       window.location.href = "http://localhost:8080/oauth2/authorization/google";
     }
 
+    // 네이버 로그인 핸들로
+    const handleNaverLogin = () => {
+      // 네이버 로그인 URL로 리다이렉트
+      window.location.href = "http://localhost:8080/oauth2/authorization/naver";
+    }
+
   return (
     <div className="login-container">
       <div className="login-box">
@@ -79,7 +85,9 @@ export default function LoginPage() {
           <button className="social-btn google" onClick={handleGoogleLogin}>
             구글로 시작하기
           </button>
-          <button className="social-btn kakao">카카오로 시작하기</button>
+          <button className="social-btn naver" onClick={handleNaverLogin}>
+            네이버로 시작하기
+          </button>
         </div>
       </div>
     </div>
