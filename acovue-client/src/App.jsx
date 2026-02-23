@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import AppRouter from "./Approuter.jsx";
 
 
+
 function App() {
   return (
     <BrowserRouter>  {/* <-- 반드시 이 안에 Header와 Routes를 넣어야 함 */}
