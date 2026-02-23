@@ -1,4 +1,4 @@
-import client from "./client";
+import client from "./Client";
 
 /**
  * 로그인 API 호출 함수
