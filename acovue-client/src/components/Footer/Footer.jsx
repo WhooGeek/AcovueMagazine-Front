@@ -1,4 +1,4 @@
-import logoImage from "../../assets/logoImage.png";
+
 import youtubeImage from "../../assets/youtube-icon.png";
 import instagramImage from "../../assets/insta-icon.png";
 import "./Footer.css";
