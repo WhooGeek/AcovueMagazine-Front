@@ -1,4 +1,4 @@
-import client from "./client";
+import client from "./Client";
 
 // 포스트 리스트 조회
 export const getPostList = (limit, page, type) =>

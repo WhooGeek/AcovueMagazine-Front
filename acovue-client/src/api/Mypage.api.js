@@ -1,4 +1,4 @@
-import client from "./client";
+import client from "./Client";
 
 
 // 마이페이지 조회

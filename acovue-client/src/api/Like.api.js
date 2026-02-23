@@ -1,4 +1,4 @@
-import client from "./client";
+import client from "./Client";
 
 // 댓글 좋아요 조회
 export const getLikeComment = (commentSeq) =>
