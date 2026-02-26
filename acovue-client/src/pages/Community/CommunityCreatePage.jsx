@@ -5,10 +5,20 @@ import { useNavigate } from 'react-router-dom';
 import { postCreatePost } from '../../api/Post.api';
 import "./CommunityCreatePage.css"
 
+const extractFirstImageUrl = (htmlContent) => {
+    // <img ... src="주소"> 형태를 찾는 정규식
+    const imgRegex = /<img[^>]+src=["']([^"']+)["']/i;
+    const match = htmlContent.match(imgRegex);
+    
+    // 사진이 있으면 첫 번째 괄호에 해당하는 주소를 반환, 없으면 null
+    return match ? match[1] : null; 
+};
+
 const CommunityCreatePage = () => {
    
     const [title, setTitle] = useState(""); 
     const [content, setContent] = useState("");
+    const [imageUrls, setImageUrls] = useState([]); 
     
     const navigate = useNavigate();
 
@@ -19,12 +29,16 @@ const CommunityCreatePage = () => {
             return;
         }
 
+        const thumbnailUrl = extractFirstImageUrl(content); 
+
         try {
             // 백엔드로 보낼 데이터 준비
             const postData = {
                 post_title: title,    // 여기서 state의 title을 사용
                 post_content: content, // 여기서 state의 content(HTML)를 사용
-                post_category: "COMMUNITY"     // 게시판 타입 (필요시 수정)
+                post_category: "COMMUNITY",     // 게시판 타입 (필요시 수정)
+                imageUrls: imageUrls,
+                thumbnail_url: thumbnailUrl 
             };
 
             await postCreatePost(postData);
@@ -36,6 +50,8 @@ const CommunityCreatePage = () => {
             console.error("글 등록 실패:", error);
             alert("글 등록 중 오류가 발생했습니다.");
         }
+
+        
     };
 
     return (
@@ -57,6 +73,8 @@ const CommunityCreatePage = () => {
             <PostEditor 
                 content={content} 
                 setContent={setContent} 
+                imageUrls={imageUrls}
+                setImageUrls={setImageUrls} 
             />
             
             {/* 등록 버튼 */}

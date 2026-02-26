@@ -3,13 +3,26 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getPostDetail, putUpdatePost } from "../../api/Post.api";
 import PostEditor from "../../components/PostDetail/PostEditor.jsx";
 
+const extractFirstImageUrl = (htmlContent) => {
+    // <img ... src="주소"> 형태를 찾는 정규식
+    const imgRegex = /<img[^>]+src=["']([^"']+)["']/i;
+    const match = htmlContent.match(imgRegex);
+    
+    // 사진이 있으면 첫 번째 괄호에 해당하는 주소를 반환, 없으면 null
+    return match ? match[1] : null; 
+};
+
 const CommonUpdatePage = ({ category, boardTitle, prevPath }) => {
-    const { postId } = useParams(); // URL 파라미터에서 postId 추출
+    const { postId } = useParams();
     const navigate = useNavigate();
     
     const [postTitle, setPostTitle] = useState("");
     const [postContent, setPostContent] = useState("");
+    // ⭐️ 1. 이미지 URL들을 담을 State 추가 (이게 없어서 에러가 났음!)
+    const [imageUrls, setImageUrls] = useState([]); 
     const [isLoading, setIsLoading] = useState(true);
+
+    
     
     useEffect(() => {
         getPostDetail(postId).then(res => {
@@ -23,18 +36,24 @@ const CommonUpdatePage = ({ category, boardTitle, prevPath }) => {
         });
     }, [postId, navigate, prevPath]);
 
-    const handleUpdate = async () => {
-        
+    
 
+    const handleUpdate = async () => {
         if(!postTitle || !postContent){
             alert("제목과 내용을 모두 입력해주세요.");
             return;
         }
 
+        // ⭐️ 2. 본문(HTML)에서 첫 번째 이미지 주소 추출하기 (정규식 사용)
+        // 새로 업로드한 사진이든, 원래 있던 사진이든 상관없이 에디터 안의 첫 번째 사진을 썸네일로 잡음!
+        const thumbnailUrl = extractFirstImageUrl(postContent);
+
         try {
             const updateData = {
                 post_title: postTitle,
                 post_content: postContent,
+                // ⭐️ 3. 백엔드 DTO에 맞게 이미지 URL 전송 (백엔드가 image_url을 원한다면 아래처럼)
+                thumbnail_url: thumbnailUrl 
             };
 
             await putUpdatePost(postId, updateData);
@@ -66,7 +85,12 @@ const CommonUpdatePage = ({ category, boardTitle, prevPath }) => {
                 }} 
             />
             
-            <PostEditor content={postContent} setContent={setPostContent} />
+            {/* ⭐️ 4. setImageUrls 프롭스 전달! (이제 this.setImageUrls is not a function 에러 안 남) */}
+            <PostEditor 
+                content={postContent} 
+                setContent={setPostContent} 
+                setImageUrls={setImageUrls} 
+            />
             
             <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
                 <button 

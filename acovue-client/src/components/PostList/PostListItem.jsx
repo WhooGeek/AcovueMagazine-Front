@@ -10,9 +10,9 @@ export default function PostListContent({post}){
 
                     {/*이미지*/}
                     <div className="post-item-image-container">
-                        {post.thumnailUrl? (
+                        {post.thumbnailUrl? (
                             /*이미지 있을 때*/ 
-                            <img src={post.thumnailUrl} alt={post.postTitle}/>
+                            <img src={post.thumbnailUrl} alt={post.postTitle}/>
                         ) : (
                             /* 이미지가 없을 때 */
                             <div className="no-image-placeholder">

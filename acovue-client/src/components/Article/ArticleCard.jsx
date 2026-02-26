@@ -15,7 +15,7 @@ export default function ArticleCard({ data }) {
 
   return (
     <div className="article-card" onClick={handleCardClick}>
-      <img className="article-image" src={data.imageUrl} alt={data.postTitle} />
+      <img className="article-image" src={data.thumbnailUrl} alt={data.postTitle} />
       <h4>{data.postTitle}</h4>
     </div>
   );

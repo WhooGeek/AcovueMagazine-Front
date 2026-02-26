@@ -27,3 +27,11 @@ export const deletePost = (postId) => {
   return client.delete(`/api/post/delete/${postId}`);
 }
 
+// 이미지 업로드(S3)
+export const postImageUpload = (formData) => {
+  return client.post(`/api/post/image`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
