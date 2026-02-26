@@ -2,7 +2,7 @@ import React from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import S3UploadAdapter from './S3UploadAdapter';
-import { getUploadAdapterPlugin } from '../Util/ckeditorUtils';
+import { getUploadAdapterPlugin } from '../Util/CkeditorUtils.js';
 import './PostEditor.css'; 
 
 
