@@ -1,17 +1,23 @@
-/* 에디터 내용이 들어가는 영역 */
-.post-content-view {
-    margin-top: 20px;
-    line-height: 1.6;
-    color: #333;
-    font-size: 16px;
+.PostDetailContentContainer {
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 
-/* 에디터 안의 이미지 크기 조절 (화면 뚫고 나가는 것 방지) */
+/* 에디터가 만든 figure 태그 여백 초기화 및 제한 */
+.post-content-view figure.image {
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+
+/* 이미지 절대 통제 */
 .post-content-view img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin: 10px 0;
+    
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block;
 }
 
 /* 문단 간격 */
