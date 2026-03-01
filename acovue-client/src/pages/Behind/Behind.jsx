@@ -5,7 +5,7 @@ export default function Behind(){
     const [behinds, setBehind] = useState([]);
     
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/post/find/all?type=BEHIND&limit=1`)
+        fetch("/api/post/find/all?type=BEHIND&limit=1")
         .then((res) => res.json())
         .then((data) => setBehind(data.data));
     }, [])
