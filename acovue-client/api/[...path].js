@@ -5,6 +5,9 @@ export default async function handler(req, res) {
   // 2. 최종 요청 주소 조합
   const targetUrl = `${backendUrl}${req.url}`;
 
+  
+  console.log("프록시가 요청할 백엔드 주소:", targetUrl);
+
   try {
     const options = {
       method: req.method,
