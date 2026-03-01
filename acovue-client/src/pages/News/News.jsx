@@ -5,7 +5,7 @@ export default function News() {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/post/find/all?type=NEWS&limit=1")
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/post/find/all?type=NEWS&limit=1`)
       .then((res) => res.json())
       .then((data) => setNews(data.data));
   }, []);

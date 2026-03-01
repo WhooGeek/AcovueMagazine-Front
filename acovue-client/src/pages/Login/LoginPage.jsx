@@ -34,13 +34,13 @@ export default function LoginPage() {
     // 구글 로그인 핸들러
     const handleGoogleLogin = () => {
       // 구글 로그인 URL로 리다이렉트
-      window.location.href = "http://localhost:8080/oauth2/authorization/google";
+      window.location.href = `${import.meta.env.VITE_API_BASE_URL}/oauth2/authorization/google`;
     }
 
     // 네이버 로그인 핸들로
     const handleNaverLogin = () => {
       // 네이버 로그인 URL로 리다이렉트
-      window.location.href = "http://localhost:8080/oauth2/authorization/naver";
+      window.location.href = `${import.meta.env.VITE_API_BASE_URL}/oauth2/authorization/naver`;
     }
 
   return (
