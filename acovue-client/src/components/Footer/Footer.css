@@ -1,55 +1,83 @@
-.footer-main-container{
-    padding: 2rem 0 2rem 0;
-    background-color: #FFA600 !important;
+.footer-main-container {
+  padding: 2rem 0;
+  background-color: #ffa600 !important;
 }
 
-.footer-container{
-    max-width : 768px;
-    min-width : 400px;
-    margin-left : auto;
-    margin-right : auto;
-    padding: 0 0 0 2rem;
-    display:flex;
-    flex-direction: column;
+.footer-container {
+  width: min(100%, 768px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-content,
 .footer-title,
-.footer-copyright{
-    text-align: center;
+.footer-copyright {
+  text-align: center;
 }
 
-.footer-content{
-    font-size:1rem;
-    font-weight: bold;
-    margin-bottom: 0.3rem;
+.footer-content {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
 }
 
-.footer-title{
-    font-size:1.3rem;
-    font-weight: 1000;
-    letter-spacing: +0.08rem;
-    margin-bottom: 1rem;
+.footer-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.08rem;
+  margin-bottom: 1rem;
 }
 
-.footer-copyright{
-    font-weight: 400;
+.footer-copyright {
+  font-weight: 400;
 }
 
-.footer-icon-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:0.7rem;
-    margin-bottom: 0.7rem;
+.footer-icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.7rem;
 }
 
-.footer-logoImage-youtube{
-    width: 1.4rem;
-    height: 1.7rem;
+@media (max-width: 480px) {
+  .footer-content {
+    font-size: 0.9rem;
+  }
+
+  .footer-title {
+    font-size: 1.1rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
 }
 
-.footer-logoImage-insta{
-    width: 1.3rem;
-    height: 1.3rem;
+/* 유튜브 아이콘 설정 */
+.footer-icon-youtube {
+  width: 1.7rem;  /* 기존 크기 유지 */
+  height: 1.7rem;
+  color: #000000; /* 검은색으로 설정 */
+  display: block;
+}
+
+/* 인스타 아이콘 설정 */
+.footer-icon-insta {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000000; /* 검은색으로 설정 */
+  display: block;
+}
+
+/* 마우스를 올렸을 때 살짝 변하는 효과 (UX 팁) */
+.footer-icon-box a:hover .footer-icon-youtube,
+.footer-icon-box a:hover .footer-icon-insta {
+  color: #333333; /* 살짝 연한 검정으로 변하게 하여 클릭감을 줌 */
+  transform: scale(1.1);
+  transition: all 0.2s ease;
 }

@@ -15,6 +15,7 @@ import CommonUpdatePage from "./pages/Common/CommonUpdatePage";
 import AboutMeUpdatePage from "./pages/About/AboutMeUpdatePage";
 import Mypage from "./pages/Mypage/Mypage";
 import OAuthRedirectHandler from "./components/Util/OAuthRedirectHandler";
+import ReviewPage from "./pages/Review/ReviewPage";
 
 export default function AppRouter() {
     return (
@@ -24,6 +25,7 @@ export default function AppRouter() {
             <Route path="/news/" element={<NewsListPage/>} />
             <Route path="/behind/" element={<BehindListPage/>} />
             <Route path="/community/" element={<CommunityListPage/>}/>
+            <Route path="/review" element={<ReviewPage/>}/>
             <Route path="/news/:postId/" element={<NewsDetailPage />} />
             <Route path="/behind/:postId/" element={<BehindDetailpage/>} />
             <Route path="/community/:postId/" element={<CommunityDetailPage/>} />

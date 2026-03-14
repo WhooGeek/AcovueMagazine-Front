@@ -1,23 +1,31 @@
-.post-detail{
-   max-width : 768px;
-    min-width : 400px;
-    margin-left : auto;
-    margin-right : auto;
-    padding: 0 0 0 2rem; 
+.post-detail {
+    width: min(100%, 768px);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
-.aboutmeContainer{
-    max-width : 768px;
-    min-width : 400px;
-    margin-left : auto;
-    margin-right : auto;
-    
-    
-    padding: 0 2.5rem 0 2.5rem;
-    display:flex;
+.aboutmeContainer {
+    width: min(100%, 768px);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: flex;
     flex-direction: column;
-    margin-top:3rem;
+    margin-top: 3rem;
     margin-bottom: 3rem;
 }
 
+@media (min-width: 768px) {
+    .post-detail {
+        padding: 0 1.5rem;
+    }
+
+    .aboutmeContainer {
+        padding: 0 2rem;
+    }
+}
 

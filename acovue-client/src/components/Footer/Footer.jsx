@@ -1,6 +1,5 @@
-
-import youtubeImage from "../../assets/youtube-icon.png";
-import instagramImage from "../../assets/insta-icon.png";
+import React from "react";
+import { AiFillYoutube, AiFillInstagram } from "react-icons/ai";
 import "./Footer.css";
 
 export default function Footer(){
@@ -9,10 +8,10 @@ export default function Footer(){
             <div className="footer-container">
                 <div className="footer-icon-box">
                     <a href="https://www.youtube.com/">
-                        <img className="footer-logoImage-youtube" src={youtubeImage} alt="youtube Logo" ></img>
+                        <AiFillYoutube className="footer-icon-youtube" />
                     </a>
                     <a href="https://www.instagram.com/acovue?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
-                        <img className="footer-logoImage-insta" src={instagramImage} alt="instagram Logo" ></img>
+                        <AiFillInstagram className="footer-icon-insta" />
                     </a>
                     
                 </div>

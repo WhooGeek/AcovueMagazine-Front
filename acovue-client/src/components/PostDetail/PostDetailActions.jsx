@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./PostDetailActions.css"
-import LikesImage from "../../assets/Likes.png";
-import CommentImage from "../../assets/Comment.png";
 import { postPostLikeToggle } from "../../api/Like.api"
+import { Heart, MessageCircle } from "lucide-react";
 
 export default function PostDetailActions({ post, postLikes, commentCount, isLiked = false }) {
 
@@ -36,13 +35,13 @@ export default function PostDetailActions({ post, postLikes, commentCount, isLik
   return (
     <div className="post-actions">
       <span className="action-item" onClick={handleLikeToggle}>
-        <img src={LikesImage} alt="좋아요" className="likesImage"/>
+        <Heart className={`icon-heart ${liked ? "active" : ""}`} />
             <a className="like-text">좋아요</a> 
             <a className="like-count">{likeCount}</a>
       </span>
 
       <span className="action-item">
-        <img src={CommentImage} alt="댓글" className="commentImage" />
+        <MessageCircle className="icon-comment" />
             <a className="comment-text">댓글</a>
             <a>
                 {commentCount}

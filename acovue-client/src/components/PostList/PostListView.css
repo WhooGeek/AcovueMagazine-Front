@@ -1,7 +1,14 @@
-.post-list-container{
-    max-width : 768px;
-    min-width : 400px;
-    margin-left : auto;
-    margin-right : auto;
-    margin-bottom:5rem;
+.post-list-container {
+  width: min(100%, 768px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .post-list-container {
+    padding: 0 1.5rem;
+  }
 }

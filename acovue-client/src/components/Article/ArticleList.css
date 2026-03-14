@@ -1,13 +1,23 @@
-.article-title{
-    border-left: 0.3rem solid #FFA600;
-    padding-left: 0.6rem;
-    margin-bottom: 0.3rem;
+.article-title {
+  border-left: 0.3rem solid #ffa600;
+  padding-left: 0.6rem;
+  margin-bottom: 0.3rem;
 }
 
-.article-container{
-    height: 22rem;
+.article-container {
+  min-height: 18rem;
 }
 
-.article-image-container{
-    margin: 1.6rem 0 0 0;
+.article-image-container {
+  margin: 1rem 0 0;
+}
+
+@media (min-width: 768px) {
+  .article-container {
+    min-height: 22rem;
+  }
+
+  .article-image-container {
+    margin-top: 1.4rem;
+  }
 }

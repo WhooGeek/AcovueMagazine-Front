@@ -52,8 +52,7 @@ export default function CommentItem({ comment, postId, currentUser, onRefresh, i
 
   return (
     <div 
-      className={`comment-box ${isReply ? "is-reply" : ""}`} 
-      style={{ marginLeft: isReply ? "40px" : "0px" }}
+      className={`comment-box ${isReply ? "is-reply" : ""}`}
     >
       
       {/* 헤더 (이름 + 뱃지) */}

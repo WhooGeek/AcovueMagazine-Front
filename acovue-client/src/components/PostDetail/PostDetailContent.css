@@ -1,6 +1,6 @@
 .PostDetailContentContainer {
     width: 100%;
-    max-width: 800px; 
+    max-width: 100%;
     margin: 0 auto;
     overflow-x: hidden;
 }
@@ -18,6 +18,26 @@
     height: auto !important;
     object-fit: contain !important;
     display: block;
+}
+
+/* 긴 URL/문장이 레이아웃을 밀지 않도록 강제 줄바꿈 */
+.post-content-view {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* 에디터가 만든 미디어/표가 모바일 폭을 넘지 않게 제한 */
+.post-content-view table,
+.post-content-view iframe,
+.post-content-view video,
+.post-content-view pre {
+    max-width: 100%;
+}
+
+.post-content-view pre {
+    overflow-x: auto;
 }
 
 /* 문단 간격 */

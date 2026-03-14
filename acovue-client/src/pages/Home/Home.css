@@ -1,12 +1,24 @@
-.home-container{
-    max-width : 768px;
-    min-width : 400px;
-    margin-left : auto;
-    margin-right : auto;
-    padding: 0 0 0 2rem;
+.home-container {
+  width: min(100%, 768px);
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-.content-section{
+.content-section {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .home-container {
+    padding: 0 1.5rem;
+  }
+
+  .content-section {
     margin-top: 2rem;
+    gap: 2rem;
+  }
 }
-

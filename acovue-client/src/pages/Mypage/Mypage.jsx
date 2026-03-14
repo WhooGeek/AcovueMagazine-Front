@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 // 1. API 함수 import 추가
 import { getMypageContent, putUpdateNickname } from '../../api/Mypage.api'; 
 import { putLogout } from "../../api/Login.api";
+import LoadingSkeleton from "../../components/Common/LoadingSkeleton";
+import PageState from "../../components/Common/PageState";
 import './Mypage.css';
 
 export default function Mypage() {
   const [member, setMember] = useState(null); 
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   // ⭐️ 2. 닉네임 수정 관련 State 추가
   const [isEditing, setIsEditing] = useState(false); // 수정 모드 여부
@@ -21,7 +24,7 @@ export default function Mypage() {
         setMember(memberData);
       } catch (error) {
         console.error("정보 로딩 실패:", error);
-        alert("정보를 불러오지 못했습니다.");
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -56,8 +59,18 @@ export default function Mypage() {
     }
   };
 
-  if (loading) return <div className="mypage-loading">로딩 중...</div>;
-  if (!member) return <div className="mypage-error">정보가 없습니다.</div>;
+  if (loading) return <LoadingSkeleton variant="detail" />;
+
+  if (error || !member) {
+    return (
+      <PageState
+        title="마이페이지 정보를 불러오지 못했습니다"
+        description="로그인 상태를 확인하고 다시 시도해주세요."
+        actionLabel="다시 시도"
+        onAction={() => window.location.reload()}
+      />
+    );
+  }
 
   const joinDate = member.regDate ? new Date(member.regDate).toLocaleDateString() : '-';
 

@@ -1,21 +1,29 @@
-.behind-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    justify-items: center;
-    max-width: 768px;
-    min-width: 768px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1rem 0;
+.behind-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: min(100%, 768px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  gap: 0.8rem;
 }
 
-.behind-listpage-title{
-    font-size:1.5rem;
-    font-weight: 800;
-    color: #333;
-    border-left: 0.3rem solid #FFA600;
-    padding-left: 0.6rem;
-
+.behind-listpage-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #333;
+  border-left: 0.3rem solid #ffa600;
+  padding-left: 0.6rem;
 }
 
+@media (min-width: 768px) {
+  .behind-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .behind-listpage-title {
+    font-size: 1.5rem;
+  }
+}

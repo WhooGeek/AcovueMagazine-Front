@@ -1,215 +1,218 @@
-.header-main-section{
-  background-color: #FFA600;
-  height: 80px;
+.header-main-section {
+  background-color: #ffa600;
+  min-height: 80px;
   display: flex;
-  
+  align-items: center;
 }
 
-.header-container{
-  display : flex;
-  max-width: 768px;
-  min-width: 768px;
+.header-container {
+  display: flex;
+  width: min(100%, 768px);
   margin-left: auto;
   margin-right: auto;
-  justify-content : space-between;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .header-left,
 .header-right {
-  width: 100px; 
-  text-align: center; 
+  width: 48px;
+  text-align: center;
 }
 
 .header-center {
-  flex-grow: 1; 
-  text-align: center; 
+  flex-grow: 1;
+  text-align: center;
 }
 
-.logoImage{
-  min-width: 1rem;
-  max-width: 6rem;
-  height: 4rem;
+.logoImage {
+  width: auto;
+  height: 58px;
+  max-width: 120px;
+  object-fit: contain;
 }
 
-.menu-bar{
-  display : flex;
-  border-top: 1px solid black;
-  height: 2.9rem;
-  font-size : 1.3rem;
-  font-weight : bold;
-  background-color: #FFA600;
+.menu-bar {
+  display: flex;
+  border-top: 1px solid #000;
+  min-height: 46px;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #ffa600;
 }
 
-.menu-bar-container{
-  display : flex;
-  width : 100%;
-  max-width: 768px;
-  min-width: 768px;
-  justify-content : space-between;
-  margin-left:auto;
-  margin-right:auto;
+.menu-bar-container {
+  display: flex;
+  width: min(100%, 768px);
+  margin-left: auto;
+  margin-right: auto;
   align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-.about{
-  padding: 0 0 0 1rem;
-}
-.community{
-  padding: 0 1rem 0 0;
-}
-
-.about,.community,.community,.news,.review,.behind{
-  color: black;
+.menu-link {
+  color: #000;
   text-decoration: none;
+  padding: 0.6rem 0.35rem;
+  flex: 1;
+  min-width: max-content;
+  text-align: center;
+  border-bottom: 3px solid transparent;
+  font-weight: 700;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.menu-button{
+.menu-link:hover {
+  background-color: transparent;
+}
+
+.menu-link.is-active {
+  color: #111;
+  border-bottom-color: #111;
+  background-color: transparent;
+}
+
+.menu-button,
+.member-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
-.menu-icon{
-  width: 2rem;
+.menu-icon {
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.user-icon {
+  width: 1.9rem;
   height: 2rem;
 }
 
-.member-button{
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.user-icon{
-  width: 2rem;
-  height: 2.2rem;
-}
-
-.modal-logo{
+.modal-logo {
   width: 4rem;
   height: 4rem;
   margin-bottom: 0.1rem;
 }
 
-.modal-message{
-  margin-top:0.2rem;
+.modal-message {
+  margin-top: 0.2rem;
 }
 
-/* 1. 드롭다운 박스 본체 */
 .dropdown-menu {
   position: absolute;
-  top: 65px; /* 버튼 아래 적절한 위치 */
-  right: 0;  /* 오른쪽 정렬 */
+  top: 58px;
+  right: 0;
   width: 160px;
-  background-color: white;
-  border-radius: 12px; /* 둥글게 */
-  /* 부드럽고 깊은 그림자 */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 
-              0 2px 6px rgba(0, 0, 0, 0.05); 
-  border: 1px solid rgba(0,0,0,0.04); /* 아주 희미한 테두리 */
+  max-width: calc(100vw - 2rem);
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
   z-index: 1000;
-  overflow: visible; /* 말풍선 꼬리가 잘리지 않도록 */
-  
-  /* 등장 애니메이션 적용 */
-  transform-origin: top right; /* 오른쪽 위에서 퍼지듯이 */
-  animation: menuSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: visible;
+  transform-origin: top right;
+  animation: menuSlideIn 0.25s ease-out forwards;
 }
 
-/* 2. 말풍선 꼬리 (삼각형) 만들기 */
 .dropdown-menu::before {
   content: "";
   position: absolute;
-  top: -8px; /* 박스 위로 튀어나오게 */
-  right: 20px; /* 회원 아이콘 위치에 맞게 조정 */
-  width: 0; 
-  height: 0; 
+  top: -8px;
+  right: 20px;
+  width: 0;
+  height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-bottom: 8px solid white; /* 아래쪽이 흰색인 삼각형 */
-  filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.05)); /* 꼬리에도 살짝 그림자 */
+  border-bottom: 8px solid #fff;
+  filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.05));
 }
 
-/* 3. 메뉴 아이템 공통 스타일 */
 .dropdown-item {
-  padding: 14px 20px;
+  padding: 12px 16px;
   cursor: pointer;
   text-decoration: none;
-  color: #4b4b4b; /* 진한 회색 */
-  font-size: 15px;
+  color: #4b4b4b;
+  font-size: 0.95rem;
   font-weight: 500;
   background: transparent;
   border: none;
   text-align: left;
-  transition: all 0.2s ease; /* 색상, 위치 변화 부드럽게 */
-  border-radius: 8px; /* 호버 시 배경도 둥글게 */
-  margin: 4px; /* 테두리와 간격 */
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  margin: 4px;
 }
 
-/* 4. 메뉴 아이템 호버 효과 (깔롱 포인트 ✨) */
 .dropdown-item:hover {
-  background-color: #fff8eb; /* 키 컬러(#FFA600)의 아주 연한 버전 */
-  color: #FFA600; /* 글씨는 키 컬러로 */
-  transform: translateX(5px); /* 오른쪽으로 살짝 이동하는 엣지 */
+  background-color: #fff8eb;
+  color: #ffa600;
+  transform: translateX(3px);
   font-weight: 600;
 }
 
-/* 첫 번째 아이템, 마지막 아이템 둥글기 처리 (margin 때문에 생략 가능하지만 안전하게) */
 .dropdown-item:first-child {
   margin-top: 6px;
 }
+
 .dropdown-item:last-child {
   margin-bottom: 6px;
 }
 
-/* 5. 등장 애니메이션 정의 (쫀득한 느낌) */
 @keyframes menuSlideIn {
   0% {
     opacity: 0;
-    transform: translateY(-10px) scale(0.95);
+    transform: translateY(-8px) scale(0.97);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-
-/* ... 위쪽 기존 헤더 스타일은 그대로 두시고, 맨 아래 모달 부분만 교체하세요 ... */
-
-/* 모달 오버레이 (검은 배경) */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 */
-  backdrop-filter: blur(3px); /* 배경을 살짝 흐리게 해서 모달 집중도 UP */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  animation: fadeIn 0.2s ease-out; /* 나타날 때 부드럽게 */
+  animation: fadeIn 0.2s ease-out;
 }
 
-/* 모달 박스 */
 .modal-content {
-  background: white;
-  padding: 30px 40px; /* 내부 여백을 좀 더 넉넉하게 */
-  border-radius: 16px; /* 둥글게 */
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* 그림자 깊게 */
-  min-width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: min(92vw, 360px);
+  box-sizing: border-box;
   transform: scale(1);
-  animation: popUp 0.2s ease-out; /* 팝업 효과 */
+  animation: popUp 0.2s ease-out;
 }
 
 .modal-content p {
-  margin-bottom: 25px;
-  font-size: 18px;
+  margin-bottom: 18px;
+  font-size: 1rem;
   font-weight: 600;
   color: #333;
 }
@@ -217,59 +220,73 @@
 .modal-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px; /* 버튼 사이 간격 */
+  gap: 12px;
 }
 
-/* 공통 버튼 스타일 */
-.btn-confirm, .btn-cancel {
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  transition: all 0.2s ease; /* 모든 변화를 부드럽게 (핵심!) */
-}
-
-/* 1. 확인(로그아웃) 버튼 - 키 컬러 적용 */
-.btn-confirm {
-  background-color: #FFA600; /* 프로젝트 키 컬러 */
-  color: white;
-  box-shadow: 0 4px 6px rgba(255, 166, 0, 0.3); /* 오렌지색 은은한 그림자 */
-}
-
-/* 확인 버튼 호버 효과 */
-.btn-confirm:hover {
-  background-color: #e69500; /* 살짝 어두운 오렌지로 변경 */
-  transform: translateY(-2px); /* 살짝 위로 떠오름 */
-  box-shadow: 0 6px 12px rgba(255, 166, 0, 0.4); /* 그림자가 진해짐 */
-}
-
-/* 확인 버튼 클릭(Active) 효과 */
-.btn-confirm:active {
-  transform: translateY(0); /* 다시 제자리로 */
-  background-color: #cc8400; /* 더 어둡게 */
-}
-
-/* 2. 취소 버튼 */
+.btn-confirm,
 .btn-cancel {
-  background-color: #f1f3f5; /* 연한 회색 */
-  color: #495057;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-/* 취소 버튼 호버 효과 */
-.btn-cancel:hover {
-  background-color: #e9ecef; /* 조금 진한 회색 */
-  transform: translateY(-2px);
+.btn-confirm {
+  background-color: #ffa600;
+  color: #111;
 }
 
-/* 애니메이션 키프레임 정의 */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.btn-cancel {
+  background-color: #ececec;
+  color: #333;
 }
 
-@keyframes popUp {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 핵심 포인트 */
+  background: linear-gradient(135deg, #ffc040 0%, #ffa600 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 6px rgba(255, 166, 0, 0.25);
+}
+
+@media (max-width: 480px) {
+  .header-main-section {
+    min-height: 70px;
+  }
+
+  .header-container {
+    padding: 0 0.75rem;
+  }
+
+  .logoImage {
+    height: 50px;
+    max-width: 104px;
+  }
+
+  .menu-bar {
+    font-size: 0.9rem;
+  }
+
+  .menu-bar-container {
+    padding: 0 0.5rem;
+    gap: 0.2rem;
+  }
+
+  .menu-link {
+    padding: 0.65rem 0.25rem;
+  }
+
+  .dropdown-menu {
+    width: 148px;
+  }
+
+  
 }
