@@ -1,10 +1,10 @@
-import React, { use } from "react";
+import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"; 
+import { getMypageContent, putUpdateNickname } from '../../api/Mypage.api'; 
+import { Link, NavLink, useNavigate } from "react-router-dom"; 
 import logoImage from "../../assets/logoImage.png";
 import "./Header.css";
-import menu from "../../assets/menu.png";
-import user from "../../assets/user.png";
+import { UserRound } from "lucide-react"
 import { putLogout } from "../../api/Login.api";
 
 export default function Header() {
@@ -14,15 +14,44 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 관리
   const [showDropdown, setShowDropdown] = useState(false); // 드롭다운 메뉴 표시 상태 관리
   const [showModal, setShowModal] = useState(false); // 로그아웃 모달 표시 상태 관리
+  const [nickname, setNickname] = useState("");
+  const [member, setMember] = useState(null); 
+  const [loading, setLoading] = useState(true);
+
+  
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
-    if(token){
+    
+
+  const fetchMyInfo = async () => {
+        try {
+          const response = await getMypageContent(); 
+          const memberData = response.data?.data || response.data; 
+          setMember(memberData);
+        } catch (error) {
+          console.error("정보 로딩 실패:", error);
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      if(token){
       setIsLoggedIn(true);
+      fetchMyInfo();
     } else{
       setIsLoggedIn(false);
     }
   }, []);
+      
+    
+
+  const getInitial = (name) => {
+    if (!name) return "U";
+    
+    return name.trim().charAt(0).toUpperCase();
+  };
 
   const handleUserIconClick = () => {
     if(isLoggedIn){
@@ -55,6 +84,9 @@ export default function Header() {
     }
   }
 
+  const getMenuLinkClass = ({ isActive }) =>
+    `menu-link ${isActive ? "is-active" : ""}`;
+
   return (
     <header className="Header" >
 
@@ -62,10 +94,10 @@ export default function Header() {
       <div className="header-main-section">
         <div className="header-container">
 
-          {/* 왼쪽: 메뉴 버튼 */}
+          {/* 왼쪽: 메뉴 버튼, 지금은 메뉴가 없어서 지워버림 */}
           <div className="header-left">
             <button className="menu-button">
-              <img src={menu} className="menu-icon"/>
+              
             </button>
           </div>
 
@@ -79,7 +111,13 @@ export default function Header() {
           {/* 오른쪽: 회원 버튼 */}
           <div className="header-right" style={{ position: "relative" }}>   
             <button className="member-button" onClick={handleUserIconClick}>
-              <img src={user} className="user-icon" alt="user" />
+              {isLoggedIn ? (
+                <div className="user-avatar">
+                  {getInitial(member?.memberNickname)} 
+                </div>
+              ) : (
+                <UserRound className="header-icon-user" />
+              )}
             </button>
             {isLoggedIn && showDropdown &&(
               <div className="dropdown-menu">
@@ -103,11 +141,11 @@ export default function Header() {
       {/* 2. 하단 메뉴바 */}
       <nav className="menu-bar">
         <div className="menu-bar-container">
-          <Link to="/about_me" className="about">ABOUT</Link>
-          <Link to="/news?page=1&limit=5&type=NEWS" className="news">NEWS</Link>
-          <Link to="/behind?page=1&limit=5&type=BEHIND" className="behind">BEHIND</Link>
-          <Link to="/review" className="review">REVIEW</Link>
-          <Link to="/community?page=1&limit=10&type=COMMUNITY" className="community">COMMUNITY</Link>
+          <NavLink to="/about_me" className={getMenuLinkClass}>ABOUT</NavLink>
+          <NavLink to="/news?page=1&limit=5&type=NEWS" className={getMenuLinkClass}>NEWS</NavLink>
+          <NavLink to="/behind?page=1&limit=5&type=BEHIND" className={getMenuLinkClass}>BEHIND</NavLink>
+          <NavLink to="/review" className={getMenuLinkClass}>REVIEW</NavLink>
+          <NavLink to="/community?page=1&limit=10&type=COMMUNITY" className={getMenuLinkClass}>COMMUNITY</NavLink>
         </div>
       </nav>
 

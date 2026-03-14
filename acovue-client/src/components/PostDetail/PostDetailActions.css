@@ -1,34 +1,67 @@
-.post-actions{
-    display:flex;
-    margin-top:2rem;
-    padding-bottom:0.7rem;
-    border-bottom: 0.3px solid black;;
-    gap:1rem;
+.post-actions {
+    display: flex;
+    margin-top: 2rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid #222; /* 0.3px보다는 1px이 브라우저에서 더 선명합니다 */
+    gap: 1.5rem; /* 아이템 간의 간격을 조금 더 여유 있게 조정 */
+    flex-wrap: wrap;
 }
 
-.action-item{
-    display:flex;
+.action-item {
+    display: flex;
     align-items: center;
+    user-select: none;
 }
 
-.likesImage{
-    height: 1rem;
-    width: 1rem;
+/* 1. 하트 아이콘 및 간격 설정 */
+.icon-heart {
+    width: 20px;
+    height: 20px;
+    stroke: #222;
+    stroke-width: 2.2px;
+    fill: none;
+    transition: all 0.3s ease;
+    margin-right: 0.4rem; /* 하트 아이콘 옆에 공간 추가 */
 }
 
-.like-text{
-    margin-left:0.4rem;
-    margin-right:0.2rem;
+/* 좋아요 버튼만 호버 시 커지는 효과 유지 */
+.action-item:has(.icon-heart):hover {
+    cursor: pointer;
 }
 
-.comment-text{
-    margin-left:0.4rem;
-    margin-right:0.2rem;
+.action-item:has(.icon-heart):hover .icon-heart {
+    transform: scale(1.1);
 }
 
-
-.commentImage{
-    height: 1rem;
-    width: 1rem;
+.icon-heart.active {
+    stroke: #ff4d4f;
+    fill: #ff4d4f;
+    animation: lucide-pop 0.3s ease-out;
 }
 
+/* 2. 댓글 아이콘 설정 (납작하게 조정) */
+.icon-comment {
+    width: 20px;
+    height: 17px; /* 높이를 살짝 줄여서 타원형 느낌을 줍니다 */
+    stroke: #222;
+    stroke-width: 2.2px;
+    fill: none;
+    margin-right: 0.4rem; /* 댓글 아이콘 옆에도 일관된 간격 추가 */
+    /* 애니메이션 및 호버 관련 transition 제외 */
+}
+
+/* 3. 텍스트 스타일 통일 */
+.like-text, .comment-text {
+    margin-right: 0.2rem;
+}
+
+.like-count, .comment-count {
+    font-weight: 500;
+}
+
+/* 팝 애니메이션 유지 */
+@keyframes lucide-pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
