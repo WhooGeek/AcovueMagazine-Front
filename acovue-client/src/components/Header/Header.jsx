@@ -1,51 +1,19 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { getMypageContent, putUpdateNickname } from '../../api/Mypage.api'; 
+import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom"; 
 import logoImage from "../../assets/logoImage.png";
 import "./Header.css";
 import { UserRound } from "lucide-react"
 import { putLogout } from "../../api/Login.api";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Header() {
 
   const navigate = useNavigate();
+  const { isLoggedIn, member, logout } = useAuth();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 관리
   const [showDropdown, setShowDropdown] = useState(false); // 드롭다운 메뉴 표시 상태 관리
   const [showModal, setShowModal] = useState(false); // 로그아웃 모달 표시 상태 관리
-  const [nickname, setNickname] = useState("");
-  const [member, setMember] = useState(null); 
-  const [loading, setLoading] = useState(true);
-
-  
-
-  useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-    
-
-  const fetchMyInfo = async () => {
-        try {
-          const response = await getMypageContent(); 
-          const memberData = response.data?.data || response.data; 
-          setMember(memberData);
-        } catch (error) {
-          console.error("정보 로딩 실패:", error);
-          setError(true);
-        } finally {
-          setLoading(false);
-        }
-      };
-
-      if(token){
-      setIsLoggedIn(true);
-      fetchMyInfo();
-    } else{
-      setIsLoggedIn(false);
-    }
-  }, []);
-      
-    
 
   const getInitial = (name) => {
     if (!name) return "U";
@@ -75,9 +43,7 @@ export default function Header() {
     } catch (error){
       console.error("Logout failed:", error);
     }finally{
-      localStorage.removeItem("accessToken");
-
-      setIsLoggedIn(false);
+      logout();
       setShowModal(false);
 
       window.location.href = "/";

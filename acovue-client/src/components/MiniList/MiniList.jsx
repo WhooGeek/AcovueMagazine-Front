@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./MiniList.css";
 
 export default function MiniList({ title, items }) {
+    const safeItems = Array.isArray(items) ? items : [];
 
     const navigate = useNavigate();
     const handleClick = (postSeq) => {
@@ -13,7 +14,7 @@ export default function MiniList({ title, items }) {
         <div className="list-container">
             <h2 className="list-title">{title}</h2>
             <div className="content-container" >
-                {items.map((item) =>(
+                {safeItems.map((item) =>(
                     <div className="content-box" key={item.postSeq} onClick={() => handleClick(item.postSeq) }>
                         <div>{item.postTitle}</div>                
                         <div>{formatTime(item.regDate)}</div>
