@@ -1,35 +1,10 @@
 import React from 'react';
-import { postLogin } from "../../api/Login.api"
-import { useState } from "react"
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './LoginPage.css';
 import google_icon from "../../assets/google_icon.png";
 import naver_icon from "../../assets/naver_icon.ico";
 
 export default function LoginPage() {
-
-    const navigate = useNavigate();
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleLogin = async (e) => {
-        e. preventDefault();
-
-        try{
-            const response = await postLogin(email, password);
-            
-            if(response.data && response.data.accessToken) {
-
-                const token = response.data.accessToken;
-                localStorage.setItem("accessToken", token);
-                window.location.href = "/";
-
-            }
-        } catch(error){
-            alert("이메일 또는 비밀번호가 틀렸습니다.");
-        }
-    }
 
     // 구글 로그인 핸들러
     const handleGoogleLogin = () => {
@@ -48,34 +23,14 @@ export default function LoginPage() {
       <div className="login-box">
         {/* 1. 로고 또는 타이틀 */}
         <h1 className="login-logo">렛츠젠츠</h1>
+        <p className="login-subtitle">소셜 계정으로 빠르게 로그인하세요.</p>
 
-        {/* 2. 로그인 폼 */}
-        <form className="login-form" onSubmit={handleLogin}>
-          <input 
-            type="email" 
-            placeholder="이메일 주소" 
-            className="login-input" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)}
-            required 
-            />
-          <input 
-            type="password" 
-            placeholder="비밀번호" 
-            className="login-input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required 
-            />
-          <button type="submit" className="login-submit-btn">로그인</button>
-        </form>
-
-        {/* 4. 구분선 */}
+        {/* 구분선 */}
         <div className="social-divider">
           <span>간편 로그인</span>
         </div>
 
-        {/* 5. 소셜 로그인 버튼들 */}
+        {/* 소셜 로그인 버튼들 */}
         <div className="social-login-group">
           <button className="social-btn google" onClick={handleGoogleLogin}>
             <img className="social-icon" src={google_icon} alt="google" />
@@ -85,6 +40,13 @@ export default function LoginPage() {
             <img className="social-icon" src={naver_icon} alt="naver" />
             네이버로 로그인
           </button>
+        </div>
+
+        <div className="admin-login-guide">
+          관리자이신가요?{" "}
+          <Link to="/admin/login" className="admin-login-link">
+            관리자 로그인
+          </Link>
         </div>
       </div>
     </div>
