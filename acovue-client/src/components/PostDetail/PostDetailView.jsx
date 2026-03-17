@@ -25,7 +25,7 @@ export default function PostDetailView({
       <PostDetailContent post={post} />
 
       {/* 액션 영역 */}
-      <PostDetailActions post={post} postLikes={postLikes} commentCount={comments.length} />
+      <PostDetailActions post={post} postLikes={postLikes} commentCount={comments.length} isLoggedIn={isLoggedIn} />
 
       {/* 댓글 목록 */}
       <PostDetailComments comments={comments} commentLikes={commentLikes} post={post} currentUser={currentUser} onRefresh={onCommentSubmit}/>
