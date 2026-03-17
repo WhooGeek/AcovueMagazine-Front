@@ -1,3 +1,31 @@
+/* 프로젝트 공통 토큰 */
+:root {
+  --color-brand-orange: #ffa600;
+  --color-text-primary: #222;
+  --color-surface: #fff;
+  --color-overlay: rgba(0, 0, 0, 0.45);
+  --color-btn-neutral: #ececec;
+  --color-btn-neutral-text: #333;
+  --color-btn-brand-text: #111;
+
+  --radius-modal: 12px;
+  --radius-button: 8px;
+  --modal-width: 360px;
+  --modal-padding: 1.2rem;
+  --modal-button-gap: 0.6rem;
+  --modal-button-min-width: 120px;
+  --modal-brand-icon-size: 56px;
+  --modal-brand-icon-size-mobile: 48px;
+
+  --header-logo-height: 58px;
+  --header-logo-max-width: 120px;
+  --header-logo-height-mobile: 50px;
+  --header-logo-max-width-mobile: 104px;
+
+  --brand-icon-size: 24px;
+  --brand-icon-size-mobile: 20px;
+}
+
 /* 모든 요소에 폰트와 박스 사이즈 적용 */
 * {
   box-sizing: border-box;
@@ -7,8 +35,8 @@
 
 body {
   margin: 0;
-  color: #222;
-  background: #fff;
+  color: var(--color-text-primary);
+  background: var(--color-surface);
   /* 폰트가 더 부드럽게 보이도록 하는 설정 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
