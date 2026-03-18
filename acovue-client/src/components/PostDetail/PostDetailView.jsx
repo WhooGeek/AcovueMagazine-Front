@@ -6,16 +6,23 @@ import PostDetailActions from "./PostDetailActions.jsx"
 import PostDetailComments from "./PostDetailComments"
 import PostDetailCommentsInput from "./PostDetailCommentInput"
 import PostDetailNavigation from "./PostDetailNavigation"
+import { useAuth } from "../../context/AuthContext";
 
 export default function PostDetailView({
   post,
   comments,
   postLikes,
   commentLikes,
-  currentUser,
-  isLoggedIn,
   onCommentSubmit
 }) {
+  const { isLoggedIn, member } = useAuth();
+  const currentUser = member
+    ? {
+        memberSeq: member.memberSeq,
+        name: member.memberName,
+      }
+    : null;
+
   return (
     <article className="post-detail">
       {/* 상단 게시글 영역 */}
