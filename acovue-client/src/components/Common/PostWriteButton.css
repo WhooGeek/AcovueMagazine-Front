@@ -1,32 +1,35 @@
 .common-write-btn-wrapper {
   display: flex;
   justify-content: flex-end;
+  flex: 0 0 auto;
 }
 
 .common-write-btn {
-  background-color: #333;
+  background-color: #fff;
   color: #fff;
-  border: none;
-  padding: 0.5rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.82rem;
+  border: 1px solid #ff4b2f;
+  color: #ff4b2f;
+  padding: 7px 11px;
+  border-radius: 4px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   white-space: nowrap;
 }
 
 .common-write-btn:hover {
-  background-color: #555;
-  transform: translateY(-2px);
+  background-color: #ff4b2f;
+  border-color: #ff4b2f;
+  color: #fff;
 }
 
 @media (min-width: 768px) {
   .common-write-btn {
-    padding: 10px 18px;
-    font-size: 15px;
+    padding: 8px 13px;
+    font-size: 13px;
   }
 }

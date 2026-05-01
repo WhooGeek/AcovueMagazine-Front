@@ -20,8 +20,8 @@ const CommonWriteButton = () => {
             navigate('/news/create');
         } else if (currentPath.includes('/community')){
             navigate('/community/create');
-        } else if (currentPath.includes('/behind')){
-            navigate('/behind/create');
+        } else if (currentPath.includes('/concert-news')){
+            navigate('/concert-news/create');
         } else {
             alert("글 작성이 불가능한 페이지입니다.");
         }
