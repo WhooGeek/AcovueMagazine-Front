@@ -1,5 +1,5 @@
 import "./Home.css";
-import News from "../News/News.jsx";
+import Guide from "../Guide/Guide.jsx";
 import Community from "../Community/Community.jsx";
 
 
@@ -8,7 +8,7 @@ export default function Home() {
     
     <div className="home-container">
         <div className="content-section">
-          <News />
+          <Guide />
           
           <Community/>
         </div>

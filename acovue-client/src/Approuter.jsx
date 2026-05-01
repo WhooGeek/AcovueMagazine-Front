@@ -2,9 +2,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import AboutMePage from "./pages/About/About";
 import AboutMeUpdatePage from "./pages/About/AboutMeUpdatePage";
-import NewsListPage from "./pages/News/NewsListPage";
-import NewsDetailPage from "./pages/News/NewsDetailPage";
-import NewsCreatePage from "./pages/News/NewsCreatePage";
+import GuideListPage from "./pages/Guide/GuideListPage";
+import GuideDetailPage from "./pages/Guide/GuideDetailPage";
+import GuideCreatePage from "./pages/Guide/GuideCreatePage";
 import ConcertNewsPage from "./pages/ConcertNews/ConcertNewsListPage";
 import ConcertNewsDetailPage from "./pages/ConcertNews/ConcertNewsDetailPage";
 import ConcertNewsCreatePage from "./pages/ConcertNews/ConcertNewsCreatePage";
@@ -23,10 +23,10 @@ export default function AppRouter() {
             <Route path="/" element={<Home />}/>
             <Route path="/about_me/" element={<AboutMePage/>}/>
             <Route path="/about_me/update" element={<AboutMeUpdatePage prevPath="/about_me"/>}/>
-            <Route path="/news/" element={<NewsListPage/>} />
-            <Route path="/news/:postId/" element={<NewsDetailPage />} />
-            <Route path="/news/create" element={<NewsCreatePage/>}/>
-            <Route path="/news/:postId/update" element={<CommonUpdatePage category="NEWS" boardTitle="뉴스 수정" prevPath="/news?page=1&limit=5&type=NEWS"/>}/>
+            <Route path="/guide/" element={<GuideListPage/>} />
+            <Route path="/guide/:postId/" element={<GuideDetailPage />} />
+            <Route path="/guide/create" element={<GuideCreatePage/>}/>
+            <Route path="/guide/:postId/update" element={<CommonUpdatePage category="GUIDE" boardTitle="원정 가이드 수정" prevPath="/guide?page=1&limit=5&type=GUIDE"/>}/>
             <Route path="/concert-news" element={<ConcertNewsPage/>}/>
             <Route path="/concert-news/:postId" element={<ConcertNewsDetailPage />} />
             <Route path="/concert-news/create" element={<ConcertNewsCreatePage/>}/>

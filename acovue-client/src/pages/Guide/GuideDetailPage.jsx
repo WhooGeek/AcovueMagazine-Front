@@ -8,7 +8,7 @@ import { getLikePost } from "../../api/Like.api";
 import LoadingSkeleton from "../../components/Common/LoadingSkeleton";
 import PageState from "../../components/Common/PageState";
 
-export default function NewsDetailPage() {
+export default function GuideDetailPage() {
   const { postId } = useParams();
 
   const [post, setPost] = useState(null);

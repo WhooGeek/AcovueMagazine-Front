@@ -1,6 +1,6 @@
 /* 1. 게시물 제목 (기존 스타일 유지) */
 .post-title {
-  border-left: 0.3rem solid #FFA600;
+  border-left: 0.3rem solid #ff4b2f;
   padding-left: 0.6rem;
   margin-bottom: 0.5rem;
   margin-top: 2rem;
@@ -58,13 +58,13 @@
 
 /* 삭제 버튼 스타일 (약간의 포인트) */
 .post-delete-button {
-  color: #FFA600;
+  color: #ff4b2f;
   border-color: #ffc9c9;
 }
 
 .post-delete-button:hover {
   background-color: #fff5f5;
-  border-color: #FFA600;
+  border-color: #ff4b2f;
 }
 
 @media (max-width: 767px) {

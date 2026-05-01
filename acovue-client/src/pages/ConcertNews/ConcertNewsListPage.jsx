@@ -98,7 +98,7 @@ export default function ConcertNewsPage() {
               </div>
 
               <h2>{post.postTitle}</h2>
-              <p>{post.memberName} {post.regDate}</p>
+              <p>{post.memberName} {formatTime(post.regDate)}</p>
             </Link>
           ))}
         </div>
