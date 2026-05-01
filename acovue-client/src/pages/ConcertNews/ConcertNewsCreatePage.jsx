@@ -3,7 +3,7 @@ import PostEditor from '../../components/PostDetail/PostEditor';
 import axios from 'axios'; 
 import { useNavigate } from 'react-router-dom';
 import { postCreatePost } from '../../api/Post.api';
-import "./BehindCreatePage.css"
+import "./ConcertNewsCreatePage.css";
 
 const extractFirstImageUrl = (htmlContent) => {
     // <img ... src="주소"> 형태를 찾는 정규식
@@ -14,13 +14,15 @@ const extractFirstImageUrl = (htmlContent) => {
     return match ? match[1] : null; 
 };
 
-const BehindCreatePage = () => {
+const ConcertNewsCreatePage = () => {
    
     const [title, setTitle] = useState(""); 
     const [content, setContent] = useState("");
     const [imageUrls, setImageUrls] = useState([]); 
     
     const navigate = useNavigate();
+
+    
 
     const handleSubmit = async () => {
         // 유효성 검사 (제목이나 내용이 비었는지 확인)
@@ -36,15 +38,15 @@ const BehindCreatePage = () => {
             const postData = {
                 post_title: title,    // 여기서 state의 title을 사용
                 post_content: content, // 여기서 state의 content(HTML)를 사용
-                post_category: "BEHIND",     // 게시판 타입 (필요시 수정)
-                imageUrls: imageUrls,
-                thumbnail_url: thumbnailUrl 
+                post_category: "CONCERT_NEWS",     // 게시판 타입 (필요시 수정)
+                imageUrls: imageUrls, // 이미지 URL 배열 (이미지 업로드 기능 구현 시 사용)
+                thumbnail_url: thumbnailUrl // 썸네일 URL 추가
             };
 
             await postCreatePost(postData);
             
             alert("글이 등록되었습니다!");
-            navigate('/behind?page=1&limit=5&type=BEHIND');
+            navigate('/concert-news?page=1&limit=5&type=CONCERT_NEWS');
 
         } catch (error) {
             console.error("글 등록 실패:", error);
@@ -54,7 +56,7 @@ const BehindCreatePage = () => {
 
     return (
         <div className="create-page-container">
-            <h1>Behind 작성</h1>
+            <h1>공연 소식 작성</h1>
             
             {/* 제목 입력 칸 */}
             <div className="create-page-title-input-container">
@@ -72,7 +74,7 @@ const BehindCreatePage = () => {
                 content={content} 
                 setContent={setContent} 
                 imageUrls={imageUrls}
-                setImageUrls={setImageUrls} 
+                setImageUrls={setImageUrls}
             />
             
             {/* 등록 버튼 */}
@@ -88,4 +90,4 @@ const BehindCreatePage = () => {
     );
 };
 
-export default BehindCreatePage;
+export default ConcertNewsCreatePage;
