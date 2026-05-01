@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { getPostList } from "../../api/Post.api";
 import "./ConcertNewsListPage.css";
 import PostWriteButton from "../../components/Common/PostWriteButton";
+import {formatTime} from "../../components/Util/FormatTime";
 
 
 export default function ConcertNewsPage() {
