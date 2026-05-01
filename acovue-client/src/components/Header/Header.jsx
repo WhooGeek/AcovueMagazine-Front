@@ -108,7 +108,7 @@ export default function Header() {
       <nav className="menu-bar">
         <div className="menu-bar-container">
           <NavLink to="/about_me" className={getMenuLinkClass}>ABOUT</NavLink>
-          <NavLink to="/news?page=1&limit=5&type=NEWS" className={getMenuLinkClass}>NEWS</NavLink>
+          <NavLink to="/guide?page=1&limit=5&type=GUIDE" className={getMenuLinkClass}>원정 가이드</NavLink>
           <NavLink to="/concert-news" className={getMenuLinkClass}>공연 소식</NavLink>
           <NavLink to="/community?page=1&limit=10&type=COMMUNITY" className={getMenuLinkClass}>COMMUNITY</NavLink>
         </div>

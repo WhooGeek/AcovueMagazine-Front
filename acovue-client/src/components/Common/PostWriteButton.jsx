@@ -4,7 +4,7 @@ import "./PostWriteButton.css";
 
 const CommonWriteButton = () => {
     const navigate = useNavigate();
-    const location = useLocation(); // 현재 URL 정보 확인
+    const location = useLocation(); 
 
     // 로그인 체크
     const isLoggedIn = !!localStorage.getItem("accessToken");
@@ -22,6 +22,8 @@ const CommonWriteButton = () => {
             navigate('/community/create');
         } else if (currentPath.includes('/concert-news')){
             navigate('/concert-news/create');
+        } else if (currentPath.includes('/guide')){
+            navigate('/guide/create');
         } else {
             alert("글 작성이 불가능한 페이지입니다.");
         }
@@ -30,7 +32,7 @@ const CommonWriteButton = () => {
     return (
         <div className="common-write-btn-wrapper">
             <button className="common-write-btn" onClick={handleWriteClick}>
-                🖊️ 글쓰기
+                글쓰기
             </button>
         </div>
     );

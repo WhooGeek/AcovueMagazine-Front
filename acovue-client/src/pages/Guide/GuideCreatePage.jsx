@@ -3,7 +3,7 @@ import PostEditor from '../../components/PostDetail/PostEditor';
 import axios from 'axios'; 
 import { useNavigate } from 'react-router-dom';
 import { postCreatePost } from '../../api/Post.api';
-import "./NewsCreatePage.css";
+import "./GuideCreatePage.css";
 
 const extractFirstImageUrl = (htmlContent) => {
     // <img ... src="주소"> 형태를 찾는 정규식
@@ -14,7 +14,7 @@ const extractFirstImageUrl = (htmlContent) => {
     return match ? match[1] : null; 
 };
 
-const NewsCreatePage = () => {
+const GuideCreatePage = () => {
    
     const [title, setTitle] = useState(""); 
     const [content, setContent] = useState("");
@@ -38,7 +38,7 @@ const NewsCreatePage = () => {
             const postData = {
                 post_title: title,    // 여기서 state의 title을 사용
                 post_content: content, // 여기서 state의 content(HTML)를 사용
-                post_category: "NEWS",     // 게시판 타입 (필요시 수정)
+                post_category: "GUIDE",     // 게시판 타입 (필요시 수정)
                 imageUrls: imageUrls, // 이미지 URL 배열 (이미지 업로드 기능 구현 시 사용)
                 thumbnail_url: thumbnailUrl // 썸네일 URL 추가
             };
@@ -46,7 +46,7 @@ const NewsCreatePage = () => {
             await postCreatePost(postData);
             
             alert("글이 등록되었습니다!");
-            navigate('/news?page=1&limit=5&type=NEWS');
+            navigate('/guide?page=1&limit=5&type=GUIDE');
 
         } catch (error) {
             console.error("글 등록 실패:", error);
@@ -56,9 +56,8 @@ const NewsCreatePage = () => {
 
     return (
         <div className="create-page-container">
-            <h1>News 작성</h1>
+            <h1>원정 가이드 작성</h1>
             
-            {/* 제목 입력 칸 */}
             <div className="create-page-title-input-container">
                 <input 
                     type="text" 
@@ -90,4 +89,4 @@ const NewsCreatePage = () => {
     );
 };
 
-export default NewsCreatePage;
+export default GuideCreatePage;

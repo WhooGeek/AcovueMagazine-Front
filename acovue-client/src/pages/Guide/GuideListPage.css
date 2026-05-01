@@ -1,0 +1,12 @@
+.guide-list-page {
+  width: 100%;
+}
+
+.guide-loader {
+  min-height: 40px;
+  margin: 24px 0 48px;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}

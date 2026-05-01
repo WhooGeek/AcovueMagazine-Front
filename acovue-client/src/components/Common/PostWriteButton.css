@@ -5,31 +5,53 @@
 }
 
 .common-write-btn {
-  background-color: #fff;
-  color: #fff;
-  border: 1px solid #ff4b2f;
-  color: #ff4b2f;
-  padding: 7px 11px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 8px 16px 8px 13px;
+  border: 1px solid #ff4b2f;
+  border-radius: 12px;
+  background: #ff4b2f;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  cursor: pointer;
+  transition: background-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
   white-space: nowrap;
+}
+
+.common-write-btn::before {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .common-write-btn:hover {
   background-color: #ff4b2f;
-  border-color: #ff4b2f;
   color: #fff;
+  filter: brightness(0.96);
+}
+
+.common-write-btn:active {
+  transform: scale(0.98);
 }
 
 @media (min-width: 768px) {
   .common-write-btn {
-    padding: 8px 13px;
+    min-height: 36px;
+    padding: 9px 18px 9px 14px;
     font-size: 13px;
   }
 }

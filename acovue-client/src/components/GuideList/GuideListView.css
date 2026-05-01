@@ -1,16 +1,16 @@
-.big-list-container {
+.guide-list-container {
   width: min(100%, 768px);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5rem;
-  margin-top: 1.5rem;
-  padding: 0 1rem;
+  margin-top: 1rem;
+  padding: 0 1.75rem;
   box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
-  .big-list-container {
-    margin-top: 2.25rem;
-    padding: 0 1.5rem;
+  .guide-list-container {
+    margin-top: 1.4rem;
+    padding: 0 2.5rem;
   }
 }

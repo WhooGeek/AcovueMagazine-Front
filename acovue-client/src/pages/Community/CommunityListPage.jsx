@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect,useState } from "react";
-import BigListView from "../../components/BigList/BigListView";
+import GuideListView from "../../components/GuideList/GuideListView";
 import { getPostList } from "../../api/Post.api"
 import LoadingSkeleton from "../../components/Common/LoadingSkeleton";
 import PageState from "../../components/Common/PageState";
@@ -48,7 +48,7 @@ export default function CommunityListPage(){
     }
 
     return(
-        <BigListView
+        <GuideListView
             postList={postList}
         />
     )
