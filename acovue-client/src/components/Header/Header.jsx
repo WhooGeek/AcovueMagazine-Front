@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom"; 
 import logoImage from "../../assets/logoImage.png";
 import "./Header.css";
-import { UserRound } from "lucide-react"
+import { Menu, UserRound } from "lucide-react"
 import { putLogout } from "../../api/Login.api";
 import { useAuth } from "../../context/AuthContext";
 
@@ -62,8 +62,8 @@ export default function Header() {
 
           {/* 왼쪽: 메뉴 버튼, 지금은 메뉴가 없어서 지워버림 */}
           <div className="header-left">
-            <button className="menu-button">
-              
+            <button className="menu-button" aria-label="메뉴 열기">
+              <Menu className="header-icon-menu" />
             </button>
           </div>
 
@@ -107,10 +107,10 @@ export default function Header() {
       {/* 2. 하단 메뉴바 */}
       <nav className="menu-bar">
         <div className="menu-bar-container">
-          <NavLink to="/about_me" className={getMenuLinkClass}>ABOUT</NavLink>
+          <NavLink to="/about_me" className={getMenuLinkClass}>렛츠젠츠</NavLink>
           <NavLink to="/guide?page=1&limit=5&type=GUIDE" className={getMenuLinkClass}>원정 가이드</NavLink>
           <NavLink to="/concert-news" className={getMenuLinkClass}>공연 소식</NavLink>
-          <NavLink to="/community?page=1&limit=10&type=COMMUNITY" className={getMenuLinkClass}>COMMUNITY</NavLink>
+          <NavLink to="/community?page=1&limit=10&type=COMMUNITY" className={getMenuLinkClass}>커뮤니티</NavLink>
         </div>
       </nav>
 
