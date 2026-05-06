@@ -1,0 +1,92 @@
+.concert-news-section {
+  margin-top: 1.75rem;
+}
+
+.concert-news-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.concert-news-title,
+.home-section-title {
+  border-left: 4px solid #ff4b2f;
+  padding-left: 8px;
+  margin: 0 0 1rem;
+  color: #111;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.concert-news-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  min-width: 0;
+}
+
+.concert-news-item {
+  min-width: 0;
+  cursor: pointer;
+}
+
+.concert-news-item .guide-list-item-image-container {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 3 / 4;      
+  border-radius: 0;     
+  box-shadow: none;
+  background: #f2f2f2;
+}
+
+.concert-news-item .guide-list-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #f2f2f2;
+}
+
+.concert-news-item .no-image-placeholder {
+  background: #e5e7eb;
+}
+
+.concert-news-item h3 {
+  margin: 0.55rem 0 0;
+  color: #222;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: keep-all;
+}
+
+.concert-news-item p {
+  margin: 0.25rem 0 0;
+  color: #777;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 520px) {
+  .concert-news-list {
+    gap: 0.75rem;
+  }
+
+  .concert-news-item h3 {
+    font-size: 0.78rem;
+  }
+
+  .concert-news-item p {
+    font-size: 0.68rem;
+  }
+}
