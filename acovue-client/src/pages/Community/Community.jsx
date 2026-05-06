@@ -4,7 +4,7 @@ export default function Community() {
 
   const [community, setCommunity] = useState([]);
   useEffect(() => {
-    fetch("/api/post/find/all?type=COMMUNITY&limit=5")
+    fetch("/api/post/find/all?type=COMMUNITY&limit=8&page=1")
     .then ((res) => res.json())
     .then ((data) => setCommunity(data.data));
   },[])

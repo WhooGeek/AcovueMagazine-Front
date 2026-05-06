@@ -30,7 +30,7 @@
 * {
   box-sizing: border-box;
   /* !important를 붙여서 다른 라이브러리 스타일보다 우선순위를 높임 */
-  font-family: 'Spoqa Han Sans Neo', 'Spoqa Han Sans JP', sans-serif !important;
+  font-family: 'Freesentation', 'Spoqa Han Sans Neo', 'Spoqa Han Sans JP', sans-serif !important;
 }
 
 body {
