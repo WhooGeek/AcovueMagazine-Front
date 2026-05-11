@@ -9,6 +9,7 @@ import ConcertNewsPage from "./pages/ConcertNews/ConcertNewsListPage";
 import ConcertNewsDetailPage from "./pages/ConcertNews/ConcertNewsDetailPage";
 import ConcertNewsCreatePage from "./pages/ConcertNews/ConcertNewsCreatePage";
 import CommunityListPage from "./pages/Community/CommunityListPage";
+import CommunityCategoryListPage from "./pages/Community/CommunityCategoryListPage";
 import CommunityDetailPage from "./pages/Community/CommunityDetailPage";
 import CommunityCreatePage from "./pages/Community/CommunityCreatePage";
 import CommonUpdatePage from "./pages/Common/CommonUpdatePage";
@@ -32,6 +33,9 @@ export default function AppRouter() {
             <Route path="/concert-news/create" element={<ConcertNewsCreatePage/>}/>
             <Route path="/concert-news/:postId/update" element={<CommonUpdatePage category="CONCERT_NEWS" boardTitle="공연 소식 수정" prevPath="/concert-news?page=1&limit=5&type=CONCERT_NEWS"/>}/>
             <Route path="/community/" element={<CommunityListPage/>}/>
+            <Route path="/community/review" element={<CommunityCategoryListPage/>}/>
+            <Route path="/community/companion" element={<CommunityCategoryListPage/>}/>
+            <Route path="/community/qna" element={<CommunityCategoryListPage/>}/>
             <Route path="/community/:postId/" element={<CommunityDetailPage/>} />
             <Route path="/community/create" element={<CommunityCreatePage/>}/>
             <Route path="/community/:postId/update" element={<CommonUpdatePage category="COMMUNITY" boardTitle="커뮤니티 수정" prevPath="/community?page=1&limit=5&type=COMMUNITY"/>}/>
