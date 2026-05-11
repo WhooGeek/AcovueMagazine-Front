@@ -1,8 +1,16 @@
 import client from "./Client";
 
 // 포스트 리스트 조회
-export const getPostList = (limit, page, type) =>
-  client.get(`/api/post/find/all?limit=${limit}&page=${page}&type=${type}`);
+export const getPostList = (limit, page, type, communityCategory) => {
+  const params = new URLSearchParams();
+
+  if (limit) params.set("limit", limit);
+  if (page) params.set("page", page);
+  if (type) params.set("type", type);
+  if (communityCategory) params.set("communityCategory", communityCategory);
+
+  return client.get(`/api/post/find/all?${params.toString()}`);
+};
 
 // 포스트 상세 조회
 export const getPostDetail = (postId) =>
