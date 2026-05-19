@@ -4,6 +4,10 @@ import client from "./Client";
 export const getCommentDetail = (postId) =>
   client.get(`/api/post/comment/find/${postId}`);
 
+// 댓글 개수 조회
+export const getCommentCount = (postId) =>
+  client.get(`/api/post/comment/count/${postId}`);
+
 // 댓글 등록
 export const postComment = (postId, data) => {
   return client.post(`/api/post/comment/create/${postId}`, data)

@@ -1,5 +1,6 @@
 import { Link, Navigate, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Heart, MessageCircle } from "lucide-react";
 import { getPostList } from "../../api/Post.api";
 import LoadingSkeleton from "../../components/Common/LoadingSkeleton";
 import PageState from "../../components/Common/PageState";
@@ -19,6 +20,22 @@ export default function CommunityCategoryListPage() {
   const [error, setError] = useState(false);
 
   const isNoticePost = (post) => post.notice === true || post.isNotice === true;
+  const getCommentCount = (post) => post.commentCount ?? post.comment_count ?? 0;
+  const getLikeCount = (post) => post.postLikeCount ?? post.likeCount ?? 0;
+  const renderCommentCount = (post) => (
+    <div className="community-category-comment-count" aria-label="댓글 수">
+      <span className="community-category-count">
+        <MessageCircle size={14} strokeWidth={1.8} aria-hidden="true" />
+        {getCommentCount(post)}
+      </span>
+    </div>
+  );
+  const renderLikeCount = (post) => (
+    <span className="community-category-like-count" aria-label="좋아요 수">
+      <Heart size={13} strokeWidth={1.8} aria-hidden="true" />
+      {getLikeCount(post)}
+    </span>
+  );
 
   useEffect(() => {
     if (!currentCategory) return;
@@ -84,16 +101,20 @@ export default function CommunityCategoryListPage() {
             {posts.filter(isNoticePost).map((post) => (
               <Link
                 key={post.postSeq}
-                to={`/community/${post.postSeq}`}
+                to={`/community/${post.postSeq}/`}
                 className="community-category-notice"
               >
-                <div className="community-category-post-title">
-                  <span className="community-notice-badge">공지</span>
-                  {post.postTitle}
+                <div className="community-category-post-header">
+                  <div className="community-category-post-title">
+                    <span className="community-notice-badge">공지</span>
+                    {post.postTitle}
+                  </div>
+                  {renderCommentCount(post)}
                 </div>
                 <div className="community-category-post-meta">
                   <span>{post.memberNickname}</span>
                   <span>{formatTime(post.regDate)}</span>
+                  {renderLikeCount(post)}
                 </div>
               </Link>
             ))}
@@ -101,7 +122,7 @@ export default function CommunityCategoryListPage() {
             {posts.filter((post) => !isNoticePost(post)).map((post) => (
               <Link
                 key={post.postSeq}
-                to={`/community/${post.postSeq}`}
+                to={`/community/${post.postSeq}/`}
                 className={`community-category-post ${post.thumbnailUrl ? "has-thumbnail" : ""}`}
               >
                 {post.thumbnailUrl && (
@@ -110,10 +131,14 @@ export default function CommunityCategoryListPage() {
                   </div>
                 )}
                 <div className="community-category-post-body">
-                  <div className="community-category-post-title">{post.postTitle}</div>
+                  <div className="community-category-post-header">
+                    <div className="community-category-post-title">{post.postTitle}</div>
+                    {renderCommentCount(post)}
+                  </div>
                   <div className="community-category-post-meta">
                     <span>{post.memberNickname}</span>
                     <span>{formatTime(post.regDate)}</span>
+                    {renderLikeCount(post)}
                   </div>
                 </div>
               </Link>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import PostDetailView from "../../components/PostDetail/PostDetailView";
 import { getPostDetail } from "../../api/Post.api";
-import { getCommentDetail } from "../../api/Comment.api";
+import { getCommentCount, getCommentDetail } from "../../api/Comment.api";
 import { getLikePost } from "../../api/Like.api";
 import LoadingSkeleton from "../../components/Common/LoadingSkeleton";
 import PageState from "../../components/Common/PageState";
@@ -13,15 +13,26 @@ export default function ConcertNewsDetailPage() {
 
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
+  const [commentCount, setCommentCount] = useState(0);
   const [postLikes, setPostLikes] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const countComments = (commentList) =>
+    commentList.reduce(
+      (total, comment) => total + 1 + (comment.children?.length || 0),
+      0
+    );
 
   const fetchComments = async () => {
 
     try {
-      const res = await getCommentDetail(postId);
-      setComments(res.data.data); // 받아온 데이터로 state 업데이트
+      const [commentRes, commentCountRes] = await Promise.all([
+        getCommentDetail(postId),
+        getCommentCount(postId).catch(() => null),
+      ]);
+      const nextComments = commentRes.data.data || [];
+      setComments(nextComments);
+      setCommentCount(commentCountRes?.data?.data?.commentCount ?? countComments(nextComments));
     } catch (err) {
       console.error("댓글 로딩 실패", err);
     }
@@ -34,11 +45,14 @@ export default function ConcertNewsDetailPage() {
     Promise.all([
       getPostDetail(postId),
       getCommentDetail(postId),
+      getCommentCount(postId).catch(() => null),
       getLikePost(postId),
     ])
-      .then(([postRes, commentRes, likeRes]) => {
+      .then(([postRes, commentRes, commentCountRes, likeRes]) => {
+        const nextComments = commentRes.data.data || [];
         setPost(postRes.data.data);
-        setComments(commentRes.data.data || []);
+        setComments(nextComments);
+        setCommentCount(commentCountRes?.data?.data?.commentCount ?? countComments(nextComments));
         setPostLikes(likeRes.data.data.postLikeCount || 0);
       })
       .catch(() => setError(true))
@@ -68,6 +82,7 @@ export default function ConcertNewsDetailPage() {
       post={post}
       comments={comments}
       postLikes={postLikes}
+      commentCount={commentCount}
       onCommentSubmit={handleRefreshComments}
     />
   );
