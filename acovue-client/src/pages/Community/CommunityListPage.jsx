@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Heart, MessageCircle } from "lucide-react";
 import { getPostList } from "../../api/Post.api";
 import LoadingSkeleton from "../../components/Common/LoadingSkeleton";
 import PageState from "../../components/Common/PageState";
@@ -45,6 +46,8 @@ export default function CommunityListPage() {
   const hasPosts = COMMUNITY_CATEGORIES.some(
     (section) => sectionPosts[section.value]?.length
   );
+  const getCommentCount = (post) => post.commentCount ?? post.comment_count ?? 0;
+  const getLikeCount = (post) => post.postLikeCount ?? post.likeCount ?? 0;
 
   if (loading) return <LoadingSkeleton variant="list" />;
 
@@ -95,8 +98,10 @@ export default function CommunityListPage() {
                   className="community-preview-row"
                 >
                   <span className="community-preview-post-title">{post.postTitle}</span>
-                  <span className="community-preview-date">{formatTime(post.regDate)}</span>
-                  <span className="community-preview-author">{post.memberNickname}</span>
+                  <span className="community-preview-meta">
+                    <span>{formatTime(post.regDate)}</span>
+                  </span>
+      
                 </Link>
               ))}
             </div>
